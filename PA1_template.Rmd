@@ -127,7 +127,9 @@ intervalAverages <- group_by(intervalAverages, interval) %>%
         summarise(mean(steps))
 # fix variable name created by dplyr
 colnames(intervalAverages) <- c("interval","meansteps")
-plot(intervalAverages$interval,intervalAverages$meansteps, type = "l", main = "Average Number of Steps Per 5-Minute Time Interval", xlab = "Interval", ylab = "Average Number of Steps")
+plot(intervalAverages$interval,intervalAverages$meansteps, type = "l", 
+     main = "Average Number of Steps Per 5-Minute Time Interval", 
+     xlab = "Interval", ylab = "Average Number of Steps")
 ```
 
 Next, calculations were performed to determine which daily activity interval most often contained the maximum number of steps. The processedActivity dataframe was subsetted to remove missing values. Next, a dataframe called maxsteps with one observation (row) for each date and the maximum steps that ocurred in any interval that date was created using functions from the dplyr package.  The dplyr mutate() function was used to add an additional variable to the maxsteps dataframe which will be used to subsequently record the interval number corresponding to the maximum value for that date.  
@@ -186,7 +188,9 @@ daily_step_sumsCombined <- group_by(combinedImputedComplete, date) %>%
 #fix variable name for dplyr generated summarized variable
 colnames(daily_step_sumsCombined) <- c("date","dailystepsum")
 
-qplot(daily_step_sumsCombined$dailystepsum, geom = "histogram", main = "Distribution of Steps Per Day with Imputed Values",xlab = "Steps Per Day", ylab = "Number of Days")
+qplot(daily_step_sumsCombined$dailystepsum, geom = "histogram", 
+      main = "Distribution of Steps Per Day with Imputed Values",
+      xlab = "Steps Per Day", ylab = "Number of Days")
 
 print(paste("The mean value for the number of steps per day with imputed values was ", 
             mean(daily_step_sumsCombined$dailystepsum),".",sep=""))

@@ -177,7 +177,9 @@ intervalAverages <- group_by(intervalAverages, interval) %>%
         summarise(mean(steps))
 # fix variable name created by dplyr
 colnames(intervalAverages) <- c("interval","meansteps")
-plot(intervalAverages$interval,intervalAverages$meansteps, type = "l", main = "Average Number of Steps Per 5-Minute Time Interval", xlab = "Interval", ylab = "Average Number of Steps")
+plot(intervalAverages$interval,intervalAverages$meansteps, type = "l", 
+     main = "Average Number of Steps Per 5-Minute Time Interval", 
+     xlab = "Interval", ylab = "Average Number of Steps")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
@@ -251,7 +253,9 @@ daily_step_sumsCombined <- group_by(combinedImputedComplete, date) %>%
 #fix variable name for dplyr generated summarized variable
 colnames(daily_step_sumsCombined) <- c("date","dailystepsum")
 
-qplot(daily_step_sumsCombined$dailystepsum, geom = "histogram", main = "Distribution of Steps Per Day with Imputed Values",xlab = "Steps Per Day", ylab = "Number of Days")
+qplot(daily_step_sumsCombined$dailystepsum, geom = "histogram", 
+      main = "Distribution of Steps Per Day with Imputed Values",
+      xlab = "Steps Per Day", ylab = "Number of Days")
 ```
 
 ```
